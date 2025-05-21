@@ -37,7 +37,7 @@ path={
         ctx:["陰杯!媽祖生氣了!不要再問!"],
         title:["迷之聲"],
         lambda:()=>{
-            ClassAPI.stage="開場";
+            
         }
     },
     "開場-s":{

@@ -168,89 +168,9 @@ function timer(fun,itvl){
     }
 }
 
-class Contain{
-    /**
-     * @param  {...HTMLElement} element 
-     * @returns {HTMLDivElement} 
-     */
-    static divc(...element){
-        var div=document.createElement("div");
-        div.className="contain divc";
-        element.forEach(e=>{
-            div.appendChild(e);
-        }); 
-        return div;
-    }
-    static divr(...element){
-        var div=document.createElement("div");
-        div.className="contain divr";
-        element.forEach(e=>{
-            div.appendChild(e);
-        }); 
-        return div;
-    }
-}
 
 
 
-class LRList{
-    /**@type {HTMLDivElement} */
-    body;
-    /**@type {(str:string)=>} */
-    changeCallback;
-    /**@type {string[]} */
-    list;
-    /**@type {HTMLImageElement} */
-    imgl;
-    /**@type {HTMLImageElement} */
-    imgr;
-    #ind=0;
-    /**@type {HTMLDivElement} */
-    #txt;
-    /**
-     * @param {string[]} list 
-     * @param {(str:string)=>} changeCallback 
-     */
-    constructor(list=[""],changeCallback=()=>{}){
-        this.changeCallback=changeCallback;
-        this.list=list;
-        this.body=document.createElement("div");
-        this.body.className="LRList contain";
-        this.imgl=document.createElement("img");
-        this.imgl.onclick=this.#change.bind(this);
-        this.imgl.dir=-1;
-        this.imgl.className="LRList imgl";
-        this.body.appendChild(this.imgl);
-
-        this.#txt=document.createElement("div");
-        this.#txt.className="LRList txt";
-        this.body.appendChild(this.#txt);
-
-        this.imgr=document.createElement("img");
-        this.imgr.onclick=this.#change.bind(this);
-        this.imgr.dir=1;
-        this.imgr.className="LRList imgr";
-        this.body.appendChild(this.imgr);
-        this.#txt.textContent=this.list[this.#ind];
-        this.imgr.src=path["image-default"];
-        this.imgl.src=path["image-default"];
-    }
-    /**
-     * @param {Event} e 
-     */
-    #change(e){
-        /**@type {HTMLElement} */
-      var tar=e.target;
-      
-        this.#ind+=parseInt(tar.getAttribute("dir"));
-        if(this.#ind<0)
-            this.#ind=this.list.length-1;
-        if(this.#ind>=this.list.length)
-            this.#ind=0;
-        this.#txt.textContent=this.list[this.#ind];
-        this.changeCallback(this.list[this.#ind]);
-    }
-}
 class Page{
     constructor(){
         this.back.className="Page back";
@@ -305,9 +225,9 @@ class Animate{
         Animate.left.src="resource/image/杯1.png";
         Animate.right.src="resource/image/杯2.png";
         this.left.className="Animate img";
-        this.left.style.left="25%";
+        this.left.style.left="30%";
         this.right.className="Animate img";
-        this.right.style.left="75%";
+        this.right.style.left="70%";
         this.contain=parent;
         this.p.style.display="none";
         addHtmlChildren(this.contain,this.left,this.right,this.p);
